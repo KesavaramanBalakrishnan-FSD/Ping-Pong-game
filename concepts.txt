@@ -1,0 +1,86 @@
+
+ Request Animation Frame:
+Scheduling Updates: requestAnimationFrame() is a method provided by the browser that helps you synchronize
+ your animation updates with the browser’s refresh rate. 
+ When you call this method, you’re telling the browser to call your specified function
+  before it does the next repaint.
+
+Timing of Calls: At 60 FPS, there’s approximately 16.67 milliseconds between each frame
+ (since 1 second divided by 60 frames = ~16.67 milliseconds). requestAnimationFrame() 
+ schedules your update function to run at these intervals.
+
+
+When you use requestAnimationFrame(), you’re scheduling a function to be called before the browser performs
+ its next repaint. If the display is set to 60 FPS, 
+ this function will be called approximately every 16.67 milliseconds (which is 1/60th of a second).
+
+https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame
+
+
+Understanding Refresh Rate and Timing:
+Browser Refresh Rate:
+
+Refresh Rate: The refresh rate of a display (like 60 Hz) refers to how many times per second the screen updates the image. For a 60 Hz display, this means the screen refreshes 60 times per second.
+Frame Duration: For a 60 Hz display, each frame (or refresh cycle) is approximately 16.67 milliseconds long (1 second / 60 frames).
+requestAnimationFrame() Timing:
+
+Scheduling Updates: requestAnimationFrame() is designed to call your update function before the browser performs its next repaint. This ensures that the visual changes you make are aligned with the timing of the screen refreshes.
+Approximate Timing: If the display is set to 60 FPS, requestAnimationFrame() schedules your callback function to run approximately every 16.67 milliseconds. This timing matches the interval between screen refreshes.
+How requestAnimationFrame() Works with Timing:
+Smooth Animation:
+
+Synchronization: By calling your update function in sync with the browser’s refresh cycle, requestAnimationFrame() ensures that your animations appear smooth and fluid. The browser redraws the screen at regular intervals, and your updates are applied just before each redraw.
+Frame Consistency: The browser can manage the timing of frames and updates, helping to avoid issues like jank or stuttering that can occur if updates are not aligned with the display refresh rate.
+Example of Timing:
+
+Animation Loop: Suppose you’re animating a ball moving across the screen. Each time requestAnimationFrame() calls your update function, you make changes to the ball’s position and then request the next frame.
+
+Time:
+Simple Analogy:
+Think of requestAnimationFrame() like a movie projector. It shows 60 frames (pictures) every second
+ to make the movie look smooth. Every time it shows a new frame, it asks the update() function, 
+ "What should I change?" The time tells you how long it's been since the movie started,
+  so you know how far the objects (like the ball) should move between frames.
+
+
+The time parameter in the update() function represents the time (in milliseconds) that has passed since the program started.
+
+
+What is getComputedStyle?
+Imagine you have a box on your webpage, and you gave it some styles using CSS. For example, you said it should be 100 pixels wide, with a blue background. The browser takes all the CSS rules you write and figures out the final result: how big the box will be, what color it will be, etc. This final result is called "computed style".
+
+getComputedStyle() lets you see the actual styles that the browser has calculated for an element.
+
+
+
+getPropertyValue() is a method that you use on the result of getComputedStyle() to get the value of a specific CSS property of an element. It allows you to retrieve the computed value of a single CSS property, like color, margin, width, etc.
+
+How It Works:
+First, you use getComputedStyle() to get all the computed styles of an element.
+Then, you can use getPropertyValue() to get the value of any specific property.
+Syntax:
+javascript
+Copy code
+let computedStyle = window.getComputedStyle(element);
+let value = computedStyle.getPropertyValue("property-name");
+element is the HTML element you're targeting.
+"property-name" is the name of the CSS property you want to get (written in kebab-case, like background-color).
+
+
+The setProperty() method in JavaScript is used to change or add a specific CSS property and its value to an element's inline styles via JavaScript.
+
+It is used with the style property of an element to directly modify its CSS styles. Unlike getPropertyValue(), which retrieves a style, setProperty() sets a new style or updates an existing one.
+
+Syntax:
+javascript
+Copy code
+element.style.setProperty("property-name", "value", "priority");
+
+
+getBoundingClientRect() is a method in JavaScript that allows you to get the size and position of an element relative to the viewport (the visible area of the browser window). It returns the bounding box (or rectangle) of the element, which includes its position (top, left, right, bottom) and its size (width, height).
+
+
+
+
+
+
